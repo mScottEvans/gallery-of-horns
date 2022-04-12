@@ -1,10 +1,10 @@
-import React from "react"; 
+import React from "react";
 
 class Header extends React.Component {
   render(){
     return (
       <>
-         <h1>Beasty Boys</h1>
+         <h1>Gallery Of Horns</h1>
       </>
     )
   }
