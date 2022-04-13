@@ -1,0 +1,11 @@
+body {
+  border: 8px solid black;
+}
+main {
+  border: 8px solid black;
+}
+.beast img {
+border: 3px solid black;
+width: 300px;
+display: flex;
+}
