@@ -1,15 +1,28 @@
 import React from "react"; 
 import HornedBeast from "./HornedBeast";
+import animals from "./animals.json";
 
- class Main extends React.Component {
-   render(){
-     return (
-       <>
-          <HornedBeast title="Horned Beast 1" description="Im a horned beasty guy" source="./beast1.jpeg" />
-          <HornedBeast title="Horned Beast 2" description="Im the horned beastiest guy" source="./beast2.jpeg" />
-       </>
-     )
-   }
- }
 
- export default HornedBeast
+
+class Main extends React.Component {
+  render(){
+    return(
+      <>
+      {animals.map((animal) => {
+        return (
+          <HornedBeast
+          title={animal.title}
+          imageUrl={animal.image_url}
+          description={animal.description}
+          key={animal._id}
+          />
+        )
+        })}
+      </>
+    )
+  }
+}
+
+ export default Main;
+
+
