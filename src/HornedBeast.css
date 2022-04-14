@@ -1,4 +1,4 @@
-body {
+/* body {
   border: 8px solid black;
 }
 main {
@@ -6,6 +6,37 @@ main {
 }
 .beast img {
 border: 3px solid black;
-width: 300px;
+width: 100%;
 display: flex;
+}
+
+article {
+  border: 1px solid gray;
+  padding: 1vw;
+  margin-bottom: 1vw;
+  width: 16%;
+} */
+
+.Card.Img  {
+  border: 3px solid black;
+  width: 100%;
+  display: flex;
+  }
+
+.card-header .card-text {
+  font-size: 11px;
+  margin: auto;
+  display: inline-block;
+  margin-bottom: .5rem;
+}
+.card-header .card-text:last-of-type {
+  padding-left: 1rem;
+  cursor: pointer;
+}
+.card-header .card-text:last-of-type:hover {
+  color: purple;
+}
+
+.article-button {
+  margin: .4rem .6vw;
 }
