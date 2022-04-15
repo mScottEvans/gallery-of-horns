@@ -46,7 +46,6 @@ import './HornedBeast.css';
      // console.log(this.props.name);
      // console.log(this.props);
      return (
-      <Col className="mb-5">
         <Card className="h-100">
           <Card.Img 
             src={this.props.imgUrl}
@@ -55,9 +54,17 @@ import './HornedBeast.css';
           />
           <Card.Header>
             <h2 onClick={this.handleTitleClick}>{this.props.title}</h2>
-            <Card.Text>☑️ {this.state.votes}Place your bet!</Card.Text>
-            <Card.Text onClick={this.handleVotes}>VOTE</Card.Text>
+
+            <Card.Text>
+              ☑️ {this.state.votes}Place your bet!
+            </Card.Text>
+
+            <Card.Text onClick={this.handleVotes}>
+              VOTE
+            </Card.Text>
+
           </Card.Header>
+          
           <Card.Body>
             <div>{this.state.votes ? 'Good or Bad?' : ''}</div>
             <Button
@@ -75,7 +82,6 @@ import './HornedBeast.css';
             </Button>
           </Card.Body>
         </Card>
-      </Col>
     )
   }
 }

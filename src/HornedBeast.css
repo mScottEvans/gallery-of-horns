@@ -16,27 +16,35 @@ article {
   margin-bottom: 1vw;
   width: 16%;
 } */
-
+body{
+  background-color: aqua;
+}
+.Card-Body {
+  background-color: aqua;
+}
 .Card.Img  {
   border: 3px solid black;
   width: 100%;
   display: flex;
-  }
-
-.card-header .card-text {
+}
+.cards {
+  width: 20vw;
+  color: white;
+}
+.Card-Header .card-text {
   font-size: 11px;
   margin: auto;
   display: inline-block;
   margin-bottom: .5rem;
 }
-.card-header .card-text:last-of-type {
+.Card-Header .card-text:last-of-type {
   padding-left: 1rem;
   cursor: pointer;
 }
-.card-header .card-text:last-of-type:hover {
+.Card-Header .card-text:last-of-type:hover {
   color: purple;
 }
 
-.article-button {
+.Article-Button {
   margin: .4rem .6vw;
 }

@@ -1,10 +1,11 @@
 import React from "react";
-import Header from './Header.js';
-import Main from './Main.js';
-import Footer from './Footer.js';
+import Header from './Header';
+import Main from './Main';
+import Footer from './Footer';
+// import SelectedBeast from './SelectedBeast';
 import Modal from 'react-bootstrap/Modal';
 import './App.css';
-import data from './animals.json';
+import data from './data.json';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -14,7 +15,9 @@ class App extends React.Component {
     this.state = {
       tickets: '',
       showModal: false,
-      title: ''
+      title: '',
+      img_url: '',
+      description: ''
     };
   }
 
@@ -30,6 +33,7 @@ class App extends React.Component {
       tickets: this.state.tickets + '🗳'
     });
   }
+  
 
   hideModalHandler = () => {
     this.setState({
@@ -37,10 +41,12 @@ class App extends React.Component {
     });
   }
 
-  showModalHandler = (title) => {
+  showModalHandler = (title, image, description) => {
     this.setState({
       showModal: true,
-      title: title
+      title: title,
+      img_url: image,
+      description: description
     });
   }
 
@@ -48,23 +54,31 @@ class App extends React.Component {
   render(){
     return(
       <>
-        <Header tickets={this.state.tickets}/>
+        <Header/>
+
         <Main 
-          addTickets={this.addTickets}
+          data={data}
           showModalHandler={this.showModalHandler}
-        data={data}
+          hideModalHandler ={this.hideModalHandler}
+          title={this.state.title}
+          img_url={this.state.img_url}
+          description={this.state.description}
+          addTickets={this.addTickets}
         />
-        <Modal 
-          show={this.state.showModal}
-          onHide={this.hideModalHandler}
-        >
+        <SelectedBeast
+          title={this.state.title}
+          img_url={this.state.img_url}
+          description={this.state.description}
+          showModal={this.showModal}
+          hideModal ={this.hideModal}
+        />
           <Modal.Header closeButton>
             <Modal.Title>
               {this.state.name}
             </Modal.Title>
           </Modal.Header>
         <Footer />
-      </Modal>
+      
       </>
     )
   }
