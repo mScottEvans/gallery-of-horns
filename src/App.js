@@ -2,28 +2,71 @@ import React from "react";
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
-// import SelectedBeast from './SelectedBeast';
-import Modal from 'react-bootstrap/Modal';
-import './App.css';
 import data from './data.json';
+// import './App.css';
+// import SelectedBeast from './SelectedBeast';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Modal from 'react-bootstrap/Modal';
+import Form from "react-bootstrap/Form";
 
+let mainData = data;
+console.log(data);
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      tickets: '',
       showModal: false,
-      title: '',
-      img_url: '',
-      description: ''
+      tickets: '',
+      modalTitle: '',
+      modalImgUrl: '',
+      modalDescription: '',
+      filteredData: mainData,
     };
   }
 
-  handleTicket = () => {
+  showModalHandler = (beastTitle, beastImage, beastDescription) => {
     this.setState({
-      tickets: this.state.tickets + 1
+      modalTitle: beastTitle,
+      modalImgUrl: beastImage,
+      modalDescription: beastDescription,
+      showModal: true
+    });
+  }
+
+
+  hideModalHandler = () => {
+    this.setState({
+      modalTitle: '',
+      modalImgUrl: '',
+      modalDescription: '',
+      showModal: false,
+      // filteredData: mainData,
+    });
+  }
+
+
+  handleSelect = event => {
+    let choice = event.target.value;
+    // console.log(choice);
+
+    if (choice !== 'all') {
+      choice = parseInt(choice);
+      let newData = data.filter(beasts => beasts.horns === parseInt(choice));
+      // let filteredData = newData;
+      this.setState({filteredData: newData});
+    } else {
+      // filteredData: data;
+      this.setState({ filteredData: data});
+    }
+    
+  }
+
+
+
+  handleLikes = () => {
+    this.setState({
+      tickets: this.state.likes + 1
     });
   }
 
@@ -35,52 +78,57 @@ class App extends React.Component {
   }
   
 
-  hideModalHandler = () => {
-    this.setState({
-      showModal: false
-    });
-  }
+  
 
-  showModalHandler = (title, image, description) => {
-    this.setState({
-      showModal: true,
-      title: title,
-      img_url: image,
-      description: description
-    });
-  }
+
+
 
 
   render(){
-    return(
+    console.log('app state', this.state);
+    console.log('app props', this.props);
+    return (
       <>
         <Header/>
-
-        <Main 
-          data={data}
+        
+          <Form>
+            <Form.Label>Filter the beasts:</Form.Label>
+            <Form.Select 
+              name="select"
+              onChange={this.handleSelect}
+              >
+                <option value='all'>All Beast</option>
+                <option value='1'>One Horn</option>
+                <option value='2'>Two Horns</option>
+                <option value='3'>Three Horns</option>
+            </Form.Select>
+          </Form>
+          <Main
+          beasts={this.state.filteredData}
           showModalHandler={this.showModalHandler}
-          hideModalHandler ={this.hideModalHandler}
-          title={this.state.title}
-          img_url={this.state.img_url}
-          description={this.state.description}
-          addTickets={this.addTickets}
-        />
-        <SelectedBeast
-          title={this.state.title}
-          img_url={this.state.img_url}
-          description={this.state.description}
-          showModal={this.showModal}
-          hideModal ={this.hideModal}
-        />
-          <Modal.Header closeButton>
-            <Modal.Title>
-              {this.state.name}
-            </Modal.Title>
-          </Modal.Header>
+          />
+        
         <Footer />
-      
+        <Modal 
+          show={this.state.showModal}
+          onHide={this.hideModalHandler}
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>{this.state.modalTitle}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <img
+              width="100%"
+              height="auto"
+              src ={this.state.modalImgUrl}
+              alt={this.state.modalDescription} />
+          </Modal.Body>
+          <Modal.Footer>
+            {this.state.modalDescription}
+          </Modal.Footer>
+        </Modal>
       </>
-    )
+    );
   }
 }
 
