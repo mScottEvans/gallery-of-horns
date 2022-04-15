@@ -5,26 +5,30 @@ import Row from 'react-bootstrap/Row';
 
 
 class Main extends React.Component {
+  
+
+
   render() {
-    let beastsArr = this.props.data.map((beasts, idx) => {
+    let beasts = this.props.beasts.map((beast) => {
       return (
         <HornedBeast
-          title={beasts.title}
-          imgUrl={beasts.image_url}
-          key={idx}
-          addVotes={this.props.addVotes}
+          title={beast.title}
+          imgUrl={beast.image_url}
+          description={beast.description}
+          key={beast._id}
+          addLikes={this.props.addLikes}
           showModalHandler={this.props.showModalHandler}
         />
       )
-    });
+  });
 
     return (
-      <main>
-        <Row xs={1} sm={3} md={4} lg={6}>
-          {beastsArr}
-        </Row>
-      </main>
-    )
+      <>
+      <Row xs={1} md={3} lg={5} className="g-4">
+        {beasts}
+      </Row>
+      </>
+    );
   } 
 }
 

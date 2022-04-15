@@ -2,24 +2,25 @@ import React from "react";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
-import './HornedBeast.css';
+// import './HornedBeast.css';
 
  class HornedBeast extends React.Component {
 
   constructor(props){
     super(props);
     this.state = {
-      votes: 0,
+      likes: 0,
       goodOrBad: false
     };
   }
 
 
-  handleVotes = () => {
-    console.log('handleVotes')
+  handleLikes = () => {
+    // console.log('handleLikes')
     this.setState({
-      votes: this.state.votes + 1
+      likes: this.state.likes + 1
     });
+    
     // console.log(this.state.votes);
   }
 
@@ -38,35 +39,39 @@ import './HornedBeast.css';
 
 
 
-  handleTitleClick = () => {
-    this.props.showModalHandler(this.props.title);
+  handleImgClick = () => {
+    this.props.showModalHandler(this.props.title, this.props.imgUrl, this.props.description);
   }
 
    render(){
      // console.log(this.props.name);
      // console.log(this.props);
      return (
+       <Col>
         <Card className="h-100">
           <Card.Img 
             src={this.props.imgUrl}
-            alt={this.props.desciption}
-            onClick={this.props.addVotes}
+            alt={this.props.description}
+            onClick={this.handleImgClick}
           />
           <Card.Header>
             <h2 onClick={this.handleTitleClick}>{this.props.title}</h2>
 
             <Card.Text>
-              ☑️ {this.state.votes}Place your bet!
+              ☑️ {this.state.likes}: Likes
             </Card.Text>
 
-            <Card.Text onClick={this.handleVotes}>
-              VOTE
+            <Card.Text onClick={this.handleLikes}>
+              Click Here to Like!
             </Card.Text>
 
           </Card.Header>
           
           <Card.Body>
-            <div>{this.state.votes ? 'Good or Bad?' : ''}</div>
+            <Card.Text>
+              {this.props.description}
+            </Card.Text>
+            <div>{this.state.likes ? 'Good or Bad?' : ''}</div>
             <Button
               className="article-button"
               onClick={this.choiceGood}
@@ -82,6 +87,7 @@ import './HornedBeast.css';
             </Button>
           </Card.Body>
         </Card>
+      </Col>
     )
   }
 }

@@ -1,14 +1,52 @@
 # By: Scott Evans
 
-## Number and name of feature: _______4_________________________
-
+## Number and name of feature: _______1_________________________
 ## Estimate of time needed to complete: __3___
+## Start time: _3pm___
+## Finish time: __6pm___
+## Actual time needed to complete: __3hrs___
 
+
+
+
+## Number and name of feature: _______2_________________________
+## Estimate of time needed to complete: __3___
 ## Start time: _6pm___
-
 ## Finish time: __12pm___
-
 ## Actual time needed to complete: __6hrs___
+
+
+
+
+## Number and name of feature: _______3_________________________
+## Estimate of time needed to complete: __3___
+## Start time: _7pm___
+## Finish time: __11pm___
+## Actual time needed to complete: __6hrs___
+
+
+
+## Number and name of feature: _______4_________________________
+## Estimate of time needed to complete: __3___
+## Start time: _3pm___
+## Finish time: __8pm___
+## Actual time needed to complete: __5hrs___
+
+
+### ToDo-> 
+#### 1. Display imagesx
+
+### 2. Allow users to like for their favorite beastx
+### 3. Bootstrapx
+
+### 4. Display a Modal
+### 5. Filter by Numbers of Hornsx
+
+
+
+
+
+
 
 ## Resources: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
 
@@ -19,7 +57,7 @@
 
 
 
-
+<!-- ***************ScottEvans.ReadMe.**************** -->
 
 
 
